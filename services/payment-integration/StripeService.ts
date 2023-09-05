@@ -8,7 +8,7 @@ import IConfig from '../../config/default';
 
 const config: IConfig = require('config');
 
-export default class StripeService implements PaymentService {
+export default class StripeService {
   stripe: Stripe;
 
   constructor(apiKey: string) {
@@ -53,12 +53,5 @@ export default class StripeService implements PaymentService {
         )
       );
     }
-  }
-
-  async createCheckoutSession({
-    user,
-    amountInSgd,
-  }: StripeCheckoutSessionArgs): Promise<string> {
-    return 'test';
   }
 }
