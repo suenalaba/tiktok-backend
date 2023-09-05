@@ -1,13 +1,13 @@
-import argon2 from 'argon2';
+import { execSync } from 'child_process';
+import { sequelizeInstance, terminate } from '../models';
 
-async function hashWithArgon2(str: string) {
-  return argon2.hash(str, {
-    timeCost: 10,
-  });
+async function reload() {
+  await sequelizeInstance.query('DROP SCHEMA IF EXISTS public CASCADE;');
+  await sequelizeInstance.query('CREATE SCHEMA public;');
+
+  execSync('./node_modules/.bin/sequelize db:migrate > /dev/null');
+
+  return await terminate();
 }
 
-async function verifyArgon2Hash(hash: string, str: string) {
-  return argon2.verify(hash, str);
-}
-
-export { hashWithArgon2, verifyArgon2Hash };
+export { reload };
