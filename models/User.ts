@@ -8,6 +8,8 @@ export class User extends BaseModel<User> {
   email!: string;
 
   password!: string;
+
+  customerId?: string | null; // stripe customer id
 }
 
 export default (sequelize: Sequelize) => {
@@ -36,6 +38,11 @@ export default (sequelize: Sequelize) => {
       password: {
         type: DataTypes.STRING, // password hash
         allowNull: false,
+      },
+      customerId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: null,
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
