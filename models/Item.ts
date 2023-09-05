@@ -6,7 +6,7 @@ export class Item extends BaseModel<Item> {
 
   description?: string | null;
 
-  price!: number;
+  priceInSgd!: number;
 }
 
 export default (sequelize: Sequelize) => {
@@ -26,7 +26,7 @@ export default (sequelize: Sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      priceInUsd: {
+      priceInSgd: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
