@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { sequelizeInstance, terminate } from '../models';
+import { sequelizeInstance } from '../models';
 
 async function reload() {
   await sequelizeInstance.query('DROP SCHEMA IF EXISTS public CASCADE;');
@@ -7,7 +7,7 @@ async function reload() {
 
   execSync('./node_modules/.bin/sequelize db:migrate > /dev/null');
 
-  return await terminate();
+  // return await terminate();
 }
 
 export { reload };

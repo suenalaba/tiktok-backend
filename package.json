@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
+    "start2": "nodemon --exec ts-node-esm ./**/*.ts",
     "start": "node dist/index.js",
     "dev": "nodemon dist/index.js",
     "db:migrate:create": "node_modules/.bin/sequelize migration:generate --name"
@@ -23,6 +24,8 @@
   },
   "dependencies": {
     "argon2": "^0.31.1",
+    "config": "^3.3.9",
+    "dotenv": "^16.3.1",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
