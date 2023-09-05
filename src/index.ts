@@ -1,6 +1,5 @@
 import { reload } from '../utils/initialiseDb';
 import IConfig from '../config/default';
-import { User } from '../models';
 
 const config: IConfig = require('config');
 
