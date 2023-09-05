@@ -1,9 +1,16 @@
-// import { reload } from '../utils/initialiseDb';
+import { reload } from '../utils/initialiseDb';
+import IConfig from '../config/default';
+import { User } from '../models';
+
+const config: IConfig = require('config');
+
+const { stripeEndpointSecret } = config.stripe;
 
 const main = async () => {
-  console.log('Hello Worldss');
+  console.log('Hello Wsorlsffdsszszs');
+  console.log(stripeEndpointSecret);
   try {
-    // await reload();
+    await reload();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
