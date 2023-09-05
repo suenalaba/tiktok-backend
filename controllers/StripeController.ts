@@ -31,19 +31,4 @@ async function handleStripeWebhook(req: Req, res: Res, next: Next) {
   }
 }
 
-async function createStripeCheckoutSession(req: Req, res: Res, next: Next) {
-  try {
-    const { user } = req as RequestWithUser;
-    const { productId, amountInSgd } = req.body;
-    const checkoutSessionUrl = await stripeService.createCheckoutSession({
-      user,
-      amountInSgd,
-    });
-
-    return res.status(200).json({ url: checkoutSessionUrl });
-  } catch (error: any) {
-    return next(error);
-  }
-}
-
 export { handleStripeWebhook };
