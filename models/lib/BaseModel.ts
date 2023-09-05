@@ -7,6 +7,7 @@ import {
   Attributes,
   CreationOptional,
   ModelStatic,
+  UpdateOptions,
 } from 'sequelize';
 
 export abstract class BaseModel<T extends BaseModel<T>> extends Model<
@@ -89,5 +90,24 @@ export abstract class BaseModel<T extends BaseModel<T>> extends Model<
       );
     }
     return updatedInstance;
+  }
+
+  /**
+   * Same as update(), but will fire sequelize hooks for each row individually.
+   * @param values the values to set
+   * @param options the sequelize options
+   * @returns an array with one or two elements. The first element is always the number of affected rows, while the second element is the actual affected rows (with options.returning true.)
+   */
+  static async updateWithHooks<M extends BaseModel<M>>(
+    this: ModelStatic<M>,
+    values: {
+      [key in keyof Attributes<M>]?: Attributes<M>[key];
+    },
+    options: UpdateOptions<Attributes<M>>
+  ): Promise<[number, M[]]> {
+    return this.update(values, {
+      ...options,
+      individualHooks: true,
+    }) as unknown as Promise<[number, M[]]>;
   }
 }
