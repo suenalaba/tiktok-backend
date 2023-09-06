@@ -5,7 +5,6 @@ import { WishlistService } from '../services/wishlists';
 async function getUserWishlist(req: Req, res: Res, next: Next) {
   try {
     const { user } = req as RequestWithUser;
-
     const wishlist = await WishlistService.getSingleton().getWishlistByUserId(
       user.id
     );

@@ -8,7 +8,7 @@ module.exports = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-router.get('/', (res: express.Response) =>
+router.get('/', (_, res: express.Response) =>
   res.json({
     data: {
       status: 'okay',

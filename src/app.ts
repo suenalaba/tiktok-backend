@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 
-const controllers = require('./controllers');
+const routes = require('../routes');
+
+// const controllers = require('../controllers');
 
 const app = express();
 
@@ -17,9 +19,14 @@ app.use(
 );
 
 app.use(express.json());
+
+Object.keys(routes).forEach((key) => {
+  app.use(routes[key].path, routes[key].router);
+});
+
 /**
  * Initiation of modules
  */
-app.init = async () => Promise.all([controllers.init()]);
+// app.init = async () => Promise.all([controllers.init()]);
 
 export default app;

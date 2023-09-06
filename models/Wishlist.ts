@@ -14,7 +14,7 @@ export class Wishlist extends BaseModel<Wishlist> {
 
   static associate(models: any) {
     Wishlist.belongsTo(models.User);
-    Wishlist.hasOne(models.Item);
+    Wishlist.belongsTo(models.Item);
   }
 }
 
