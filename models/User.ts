@@ -10,6 +10,11 @@ export class User extends BaseModel<User> {
   password!: string;
 
   customerId?: string | null; // stripe customer id
+
+  static associate(models: any) {
+    User.hasOne(models.Wallet);
+    User.hasMany(models.Wishlist);
+  }
 }
 
 export default (sequelize: Sequelize) => {

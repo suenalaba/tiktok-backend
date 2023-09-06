@@ -1,6 +1,7 @@
 import UserModel, { User } from './User';
 import ItemModel, { Item } from './Item';
 import WalletModel, { Wallet } from './Wallet';
+import WishlistModel, { Wishlist } from './Wishlist';
 import { Sequelize } from 'sequelize';
 
 // TODO: abstract to .env
@@ -19,6 +20,7 @@ const newModels = {
   User: UserModel(sequelizeInstance),
   Wallet: WalletModel(sequelizeInstance),
   Item: ItemModel(sequelizeInstance),
+  Wishlist: WishlistModel(sequelizeInstance),
 };
 
 Object.values(newModels).forEach((model) => {
@@ -33,4 +35,4 @@ async function terminate() {
 
 export default newModels;
 
-export { User, Wallet, Item, sequelizeInstance, terminate };
+export { User, Wallet, Item, Wishlist, sequelizeInstance, terminate };

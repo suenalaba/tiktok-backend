@@ -1,14 +1,22 @@
+import { sequelizeInstance } from '../models';
 import { reload } from '../utils/initialiseDb';
-import IConfig from '../config/default';
+// import IConfig from '../config/default';
+import app from './app';
 
-const config: IConfig = require('config');
+// const config: IConfig = require('config');
 
-const { stripeEndpointSecret } = config.stripe;
+// const { stripeEndpointSecret } = config.stripe;
 
 const main = async () => {
-  console.log('Hello Wsorlsffdsszszs');
-  console.log(stripeEndpointSecret);
+  console.log('hello');
+  // app.init();
+
+  app.listen(4000, () => {
+    console.log('server started on localhost:4000');
+  });
+
   try {
+    await sequelizeInstance.sync({ alter: true });
     await reload();
     console.log('Connection has been established successfully.');
   } catch (error) {
