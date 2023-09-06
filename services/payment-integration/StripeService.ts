@@ -1,12 +1,12 @@
 import Stripe from 'stripe';
-import {
-  CreateCheckoutSessionArgs,
-  PaymentService,
-  StripeCheckoutSessionArgs,
-} from './types';
-import IConfig from '../../config/default';
+// import {
+//   CreateCheckoutSessionArgs,
+//   PaymentService,
+//   StripeCheckoutSessionArgs,
+// } from './types';
+// import IConfig from '../../config/default';
 
-const config: IConfig = require('config');
+// const config: IConfig = require('config');
 
 export default class StripeService {
   stripe: Stripe;

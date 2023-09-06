@@ -1,10 +1,8 @@
 import Stripe from 'stripe';
 import { Request as Req, Response as Res, NextFunction as Next } from 'express';
-import { RequestWithUser } from '../models/lib/tsTypes';
 import IConfig from '../config/default';
 import { stripeService } from '../services/payment-integration';
 import { EventConsumerService } from '../services/payment-integration/EventConsumerService';
-import { User } from '../models';
 
 const config: IConfig = require('config');
 
